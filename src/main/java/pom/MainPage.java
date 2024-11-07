@@ -3,6 +3,10 @@ package pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class MainPage {
     private WebDriver driver;
@@ -45,5 +49,18 @@ public class MainPage {
     }
     public WebElement getSectionHeader(Integer index) {
         return driver.findElements(ingredientSections).get(index);
+    }
+
+    public boolean isActiveSection(Integer index) {
+        return this.getSectionHeader(index).getAttribute("class").contains("tab_tab_type_current__2BEPc");
+    }
+
+    public boolean isNotActiveSection(Integer index) {
+        return !this.getSectionHeader(index).getAttribute("class").contains("tab_tab_type_current__2BEPc");
+    }
+
+    public void selectHeader(int index) {
+        WebElement header = this.getSectionHeader(index);
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(header)).click();
     }
 }

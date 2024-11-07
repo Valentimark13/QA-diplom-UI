@@ -1,35 +1,12 @@
 import helper.Generator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pom.RegistrationPage;
 import java.time.Duration;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import io.qameta.allure.Step;
 
-public class RegistrationTests {
-    private WebDriver driver;
-    private RegistrationPage registrationPage;
-
-    @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        registrationPage = new RegistrationPage(driver);
-    }
-
-    @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+public class RegistrationTests extends AbstractTests {
 
     @Test
     public void testSuccessfulRegistration() {

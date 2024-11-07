@@ -22,6 +22,9 @@ public class LoginPage {
     private final By passwordElement = By.name("Пароль");
     private final By submitButtonElement = By.cssSelector(".button_button__33qZ0.button_button_type_primary__1O7Bx.button_button_size_medium__3zxIa");
 
+    public void open() {
+        driver.get(url);
+    }
     public void setEmail(String name) {
         driver.findElement(emailElement).sendKeys(name);
     }
